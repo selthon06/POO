@@ -19,14 +19,7 @@ Atividade 3  ██████████ 60%
 ```
 ## 🎯 Anotações
 
-| Atividade | Peso | Tipo |
-|:---------:|:----:|:----:|
-| **Atividade Avaliativa 1** | **2,0** | 📖 Conceitual | 
-| **Atividade Avaliativa 2** | **2,0** | 💻 Prática em sala |
-| **Atividade Avaliativa 3** | **6,0** | 🚀 prática dev. | 
-
-
-
+...
 
 
 # By. Selthon.404
