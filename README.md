@@ -1,7 +1,28 @@
-# Avaliações --- Programação Orientada à Objetos
+# 📚 Avaliações — Programação Orientada a Objetos (POO)
 
-*** Atividade avaliativa 1 -> peso 2 >> Conceitual ***
+## 📝 Composição da Nota
 
-*** Atividade avaliativa 2 -> peso 2 >> Avaliação prática em sala ***
+| Atividade | Peso | Tipo | Descrição |
+|:---------:|:----:|:----:|-----------|
+| **Atividade Avaliativa 1** | **2,0** | 📖 Conceitual | 
+| **Atividade Avaliativa 2** | **2,0** | 💻 Prática em sala | |
+| **Atividade Avaliativa 3** | **6,0** | 🚀 prática dev. | 
 
-*** Atividade avaliativa 3 -> peso 6 >> prática ***
+---
+
+## 📊 Distribuição dos Pesos
+
+```text
+Atividade 1  ████░░░░░░ 20%
+Atividade 2  ████░░░░░░ 20%
+Atividade 3  ██████████ 60%
+```
+## 🎯 Anotações
+
+
+
+
+
+
+
+# By. Selthon.404
