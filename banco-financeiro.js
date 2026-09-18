@@ -28,7 +28,7 @@ class Conta{
             console.log('Senha incorreta')
             return
         }
-        console.log(Seu saldo é ${this.#saldo})
+        console.log(`Seu saldo é ${this.#saldo}`);
     }
 
     depositar(valor, senha)
