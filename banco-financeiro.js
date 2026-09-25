@@ -1,8 +1,21 @@
+class BancoCentral {
+    static transferirValor(emitente, destino, valor, senha) {
+        if (emitente.sacar(valor, senha)) {
+            destino.depositoViaBc(valor);
+        }
+    }
+}
+
+
 class Pessoa {
     #nome
     #cpf
     #endereco
     #dataNasc
+
+    get nome() {
+        return this.#nome;
+    }
 
     constructor(nome, dataNasc, cpf) {
         this.#nome = nome
@@ -40,14 +53,21 @@ class Conta {
     sacar(valorSaque, senha) {
         if (!this.validarSenha(senha)) {
             console.log('Senha incorreta')
-            return
+            return false
+        }
+
+        if (valorSaque <= 0) {
+            console.log("O valor do saque deve ser maior que zero")
+            return false
         }
 
         if ((this.#saldo - valorSaque) >= 0) {
             this.#saldo -= valorSaque
+            return true
         }
         else {
             console.log('Saldo insuficiente.')
+            return false
         }
     }
 
@@ -57,10 +77,10 @@ class Conta {
             return
         }
 
-        console.log(`Seu saldo é ${this.#saldo}`)
+        console.log(`${this.#dono.nome}, seu saldo é ${this.#saldo}`)
     }
 
-    depositar(valor, senha) {
+    depositar(valor, senha) { // sobrecarga
         if (!this.validarSenha(senha)) {
             console.log('Senha incorreta')
             return
@@ -79,32 +99,10 @@ class Conta {
         this.#saldo += valor
     }
 
-    transferencia(contaDestino, valor, senha) {
-
-        if (!this.validarSenha(senha)) {
-            console.log('Senha incorreta')
-            return
-        }
-
-        if (valor <= 0) {
-            console.log('O valor da transferência deve ser maior que zero')
-            return
-        }
-
-        if (this.#saldo < valor) {
-            console.log('Saldo insuficiente.')
-            return
-        }
-
-        this.#saldo -= valor
-        contaDestino.#receberTransferencia(valor)
-
-        console.log('Transferência realizada com sucesso.')
+    depositoViaBc(saldo) {
+        this.#saldo += saldo
     }
 
-    #receberTransferencia(valor) {
-        this.#saldo += valor
-    }
 
     validarSenha(senha) {
         return senha === this.#senha
@@ -127,19 +125,19 @@ let manoel = new Pessoa(
 
 
 // Criando contas
-let minhaConta = jose.criarConta()
-let minhaConta2 = manoel.criarConta()
+let contaJose = jose.criarConta()
+let contaManuel = manoel.criarConta()
 
 
-// Deposito do dinheiro na conta do José
-minhaConta.depositar(500, "admin")
+// Fazer operação de transferência
+contaJose.depositar(50, "admin")
+contaManuel.depositar(150, "admin")
 
-console.log("Saldo José:", minhaConta.saldo)
+// let BC = new BancoCentral()
+
+BancoCentral.transferirValor(contaJose, contaManuel, 30, "admin")
 
 
-// José transfere R$ 200 para Manoel
-minhaConta.transferencia(minhaConta2, 200, "admin")
-
-
-console.log("Saldo José:", minhaConta.saldo)
-console.log("Saldo Manoel:", minhaConta2.saldo)
+// Ver extrato
+contaJose.extrato("admin")
+contaManuel.extrato("admin")
